@@ -3,11 +3,13 @@ volumes:
   nextcloud-data:
   nextcloud-db:
 
+# nc-frontend  & nc-backend networks shall be created on portainer
 networks:
-  frontend:
+  nc-frontend:
     # add this if the network is already existing!
     # external: true
-  backend:
+  nc-backend:
+    # external: true
 
 services:
   nextcloud-app:
@@ -21,8 +23,8 @@ services:
       - MYSQL_USER=nextcloud
       - MYSQL_HOST=nextcloud-db
     networks:
-      - frontend
-      - backend
+      - nc-frontend
+      - nc-backend
 
   nextcloud-db:
     image: mariadb
@@ -36,4 +38,4 @@ services:
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
     networks:
-      - backend
+      - nc-backend
