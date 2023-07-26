@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+    phpmyadmin:
+        container_name: phpmyadmin
+        environment:
+            - PMA_ARBITRARY=1
+        ports:
+            - '3061:80'
+        image: phpmyadmin
